@@ -12,6 +12,7 @@
     ]
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "start": "lerna run --parallel start",
     "build": "lerna run build",
     "serve": "lerna run --parallel serve",

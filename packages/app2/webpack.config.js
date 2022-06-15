@@ -2,18 +2,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack"); // only add this if you don't have yet
 const { ModuleFederationPlugin } = webpack.container;
 const deps = require("./package.json").dependencies;
-require("dotenv").config({ path: "./.env" });
 
-const buildDate = new Date().toLocaleString();
-
-module.exports = (env, argv) => {
-  const isProduction = argv.mode === "production";
-  console.log({ isProduction });
+module.exports = () => {
   return {
     entry: "./src/index.js",
     mode: process.env.NODE_ENV || "development",
     devServer: {
-      port: 3000,
+      port: 3002,
       hot: true,
       open: true,
       headers: {
@@ -29,34 +24,15 @@ module.exports = (env, argv) => {
           test: /\.(js|jsx)$/,
           loader: "babel-loader",
           exclude: /node_modules/,
-          options: {
-            cacheDirectory: true,
-            babelrc: false,
-            presets: [
-              [
-                "@babel/preset-env",
-                { targets: { browsers: "last 2 versions" } },
-              ],
-              "@babel/preset-react",
-            ],
-            plugins: [
-              ["@babel/plugin-proposal-class-properties", { loose: false }],
-            ],
-          },
         },
       ],
     },
 
     plugins: [
-      new webpack.EnvironmentPlugin({ BUILD_DATE: buildDate }),
-      new webpack.DefinePlugin({
-        "process.env": JSON.stringify(process.env),
-      }),
       new ModuleFederationPlugin({
-        name: "host",
-        remotes: {
-          app1: isProduction ? process.env.PROD_APP1 : process.env.DEV_APP1,
-          app2: isProduction ? process.env.PROD_APP2 : process.env.DEV_APP2,
+        name: "app2",
+        exposes: {
+          "./CounterAppTwo": "./src/components/CounterAppTwo",
         },
         shared: {
           ...deps,
