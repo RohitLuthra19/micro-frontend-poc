@@ -31,6 +31,7 @@ module.exports = () => {
     plugins: [
       new ModuleFederationPlugin({
         name: "app1",
+        filename: "remoteEntry.js",
         exposes: {
           "./CounterAppOne": "./src/components/CounterAppOne",
         },
