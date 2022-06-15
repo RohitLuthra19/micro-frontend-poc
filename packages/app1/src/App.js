@@ -1,6 +1,17 @@
 import React from 'react';
-import CounterAppOne from "./components/CounterAppOne";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AppOne from "./components/AppOne";
+import Detail from "./components/Detail"
 
-const App = () => <div><CounterAppOne /></div>;
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<AppOne />} />
+                <Route path="/app1/:id" element={<Detail />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
 
 export default App;

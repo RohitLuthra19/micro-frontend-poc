@@ -1,6 +1,6 @@
 import React from 'react';
-import CounterAppTwo from "./components/CounterAppTwo";
+import AppTwo from "./components/AppTwo";
 
-const App = () => <div><CounterAppTwo /></div>;
+const App = () => <div><AppTwo /></div>;
 
 export default App;

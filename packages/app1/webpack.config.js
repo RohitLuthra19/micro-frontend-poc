@@ -33,7 +33,8 @@ module.exports = () => {
         name: "app1",
         filename: "remoteEntry.js",
         exposes: {
-          "./CounterAppOne": "./src/components/CounterAppOne",
+          "./AppOne": "./src/components/AppOne",
+          "./Detail": "./src/components/Detail",
         },
         shared: {
           ...deps,
