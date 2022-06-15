@@ -1,18 +1,24 @@
 
-import React, { useState } from "react";
+import React from "react";
+import {
+    Link, 
+} from "react-router-dom";
 
-const Counter = () => {
-    const [count, setCount] = useState(0);
+const AppTwo = () => {
+
+    function renderLinks() {
+        return [1, 2, 3].map(item => {
+            return <Link to={{ pathname: `/app2/${item}`, id: item }} key={item} >
+                <div>App2 Item: {item}</div>
+            </Link>
+        })
+    }
 
     return (
         <div>
-            <div>
-                Add by one each click <strong>APP-2</strong>
-            </div>
-            <div>Your click count : {count} </div>
-            <button onClick={() => setCount(count + 1)}>Click me</button>
+            {renderLinks()}
         </div>
     );
 };
 
-export default Counter;
+export default AppTwo;

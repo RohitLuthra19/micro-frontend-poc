@@ -9,7 +9,7 @@ const AppOne = () => {
     function renderLinks() {
         return [1, 2, 3].map(item => {
             return <Link to={{ pathname: `/app1/${item}`, id: item }} key={item} >
-                <div>Item: {item}</div>
+                <div>App1 Item: {item}</div>
             </Link>
         })
     }

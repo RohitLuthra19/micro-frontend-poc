@@ -9,7 +9,7 @@ const Detail = () => {
 
     return (
         <div>
-            App1 Item Details {params.id}
+            App2 Item Details {params.id}
         </div>
     );
 };
