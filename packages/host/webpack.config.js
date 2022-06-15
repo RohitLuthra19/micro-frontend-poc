@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
               "@babel/preset-react",
             ],
             plugins: [
-              ["@babel/plugin-proposal-class-properties", { loose: true }],
+              ["@babel/plugin-proposal-class-properties", { loose: false }],
             ],
           },
         },
